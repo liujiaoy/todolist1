@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: hanhanTie
-subtitle: '何处惹尘埃'
-description: '很难说清这会变成一个什么网站的网站'
+title: LJYALW
+subtitle: '我思,故我在'
+description: '憨憨的博客，应该会有知识点记录，也会有日常'
 keywords:
-author: LJY
+author: 憨憨一个
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: http://liujiaoy.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -102,10 +102,12 @@ theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-
 deploy:
   type: git
-  repository: git@github.com:liujiaoy/liujiaoy.github.io.git
+  repo: git@github.com:liujiaoy/liujiaoy.github.io.git
   branch: master
-  message: message
 
+# search
+search:
+  path: search.xml
+  field: post
