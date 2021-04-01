@@ -65,7 +65,6 @@ hexo d
 
 在写博客的时候经常会需要用到图片，下面将hexo怎么引用图片比较方便
 
-
 1、安装图片插件
 
 ``` npm
@@ -82,6 +81,8 @@ post_asset_folder：true
 ![picture1](picture1.JPG)
 ```
 
-![一二放空](hexo安装以及常用指令/empty.JPG)
+[test01](test01.png)
 
 ![alt](http://static.runoob.com/images/runoob-logo.png)
+
+<img src="test01.png" width="25%" height="25%" />
