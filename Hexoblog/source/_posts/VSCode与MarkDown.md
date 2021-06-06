@@ -1,6 +1,8 @@
 ---
 title: VSCode 和 MarkDown
 date: 2020-10-29 17:38:47
+top_img: images/一二看花.jpg
+cover: images/一二看花.jpg
 tags: 
     - VSCode 
     - MarkDown

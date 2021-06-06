@@ -1,6 +1,8 @@
 ---
 title: Git与Github安装使用教程
 date: 2020-10-28 10:23:30
+top_img: images/indeximg.png
+cover: images/indeximg.png
 tags:
     - Git
 categories: 

@@ -1,6 +1,8 @@
 ---
 title: vue v-show状态值改变，视图未更新
 date: 2021-03-31 15:46:24
+top_img: images/冬雪.jpg
+cover: images/冬雪.jpg
 categories: 
     - code
 tags:

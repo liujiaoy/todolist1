@@ -1,6 +1,8 @@
 ---
 title: 记录从零搭建Vue-cli
 date: 2020-10-28 10:23:30
+top_img: images/冬雪.jpg
+cover: images/冬雪.jpg
 categories: 
     - code
 tags:

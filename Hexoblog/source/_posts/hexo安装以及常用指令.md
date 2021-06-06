@@ -1,6 +1,8 @@
 ---
 title: hexo安装以及常用指令
 date: 2020-11-03 13:57:23
+top_img: empty.jpg
+cover: empty.jpg
 tags: 
     - Hexo
 categories: 
@@ -72,8 +74,11 @@ npm install hexo-asset-image --save
 ```
 
 2、修改_config.yml中的一个设置
-post_asset_folder：true
+post_asset_folder:true
 这个设置在new一个博客时创建一个同名文件夹，在这个文件夹中存图片
+修改博客目录下node_modules\hexo-asset-image\index.js
+![修改bug](bug.png)
+
 
 3、插入图片语法
 

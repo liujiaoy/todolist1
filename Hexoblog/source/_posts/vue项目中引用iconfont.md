@@ -1,6 +1,8 @@
 ---
 title: vue项目中引用iconfont
 date: 2021-03-31 15:46:24
+cover: 01.png
+top_image: 01.png
 categories: 
     - code
 tags:
