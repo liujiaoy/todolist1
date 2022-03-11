@@ -153,4 +153,4 @@ function getUrlParam(name) {
 
 ![百度一下，你就知道](http://static.runoob.com/images/runoob-logo.png)
 
-    目前支持的 HTML 元素有：<kbd> <b> <i> <em> <sup> <sub> <br>等 ，如：
+    目前支持的 HTML 元素有：<kbd> <b> <i> <em> <sup> <sub> <br>等 

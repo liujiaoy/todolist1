@@ -1,0 +1,71 @@
+#outerBox{
+    height: 800px; 
+    width: 1800px;
+    background-color: aliceblue; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-flow: row nowrap;
+    justify-content:space-evenly;
+    align-items: center;
+    align-content:center;
+
+}
+#outerBox>div{
+   order:0;
+   flex-grow: 0;
+   flex-shrink: 1;
+   flex-basis: auto;
+   flex: 0 1 auto; 
+   background-color: aqua;
+   /*快捷属性auto ( 1 1 auto),none( 0 0 auto)*/
+   /* align-self: center;
+}
+
+/* 清除浮动 去除float导致的高度塌陷问题*/
+/* 方式一  触发父元素的BFC，利用BFC的特性，高度会将浮动元素包含在内 
+          BFC的特性:
+          1.属于同一个BFC的两个相邻容器的上下margin会重叠
+          2.计算BFC高度时浮动元素参加计算
+          2.BFC的区域不会和浮动元素发生重叠
+          触发BFC的条件：
+          1.根元素
+          2.float非none
+          3.overflow非visible
+          4.display值为inline-block,table-cell,table-caption,flex,inline-flex
+          5.position值为absolute,fixed
+
+*/
+/* .float_item{
+    float: left;
+    height: 100px;
+    background-color: blue;
+} */
+/* BFC元素不会和float块重叠 */
+/* .item2{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: antiquewhite;
+} */
+
+/* #outerBox{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+
+}
+.item1{
+    height: 50px;
+    width: 50px;
+    background-color: antiquewhite;
+    margin: 10px 0;
+}
+.item2{
+    height: 50px;
+    width: 50px;
+    background-color: lightcyan;
+    margin: 10px 0;
+} */
+

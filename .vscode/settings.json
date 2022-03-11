@@ -4,5 +4,6 @@
         "titleBar.activeBackground": "#890311",
         "titleBar.activeForeground": "#FFFBFC"
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.tabSize": 4,
 }

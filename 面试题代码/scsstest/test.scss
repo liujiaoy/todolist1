@@ -1,0 +1,9 @@
+$bgcolor:red;
+$pbgcolor:blue;
+
+body{
+  background-color: $bgcolor;
+  p{
+    background-color: $pbgcolor;
+  }
+}

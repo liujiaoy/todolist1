@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "clean",
+			"path": "hexoBlog/",
+			"problemMatcher": [],
+			"label": "npm: clean - hexoBlog",
+			"detail": "hexo clean"
+		}
+	]
+}

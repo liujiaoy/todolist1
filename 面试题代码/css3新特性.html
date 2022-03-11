@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    /* #outBox{
+      background-color:aqua;
+      width: 800px;
+      height:400px;
+    }
+    #centerBox{
+      float: left;
+      background-color: red;
+      width: 100px;
+    } */
+
+    /* transition过渡效果 */
+    /* #centerBox:hover{
+      width:300px;
+      transition: width,.5s,linear,2s;
+    }  */
+    /* animation */
+
+    /* #outBox{
+      background-color:aqua;
+      width: 800px;
+      height:400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #centerBox{
+      height: 100px;
+      width: 100px;
+    }
+    #wave{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+      margin: 0;
+    }
+    #wave li{
+      list-style-type:none;
+      height: 0;
+      width: 15px;
+      background-color: brown;
+      margin: 0 2px;
+    }
+    #centerBox #wave .li1{
+      animation: waves .8s linear 1s infinite alternate;
+    }
+    #wave .li2{
+      animation: waves 1s linear .2s infinite alternate;
+    }
+    #wave .li3{
+      animation: waves 2s linear .5s infinite alternate;
+    }
+    #wave .li4{
+      animation: waves 1s linear .5s infinite alternate;
+    }
+    #wave .li5{
+      animation: waves 1.5s linear .5s infinite alternate;
+    }
+    @keyframes waves{
+      10% {
+        height:20%
+      }
+      20%{
+        height:60%
+      }
+      40% {
+        height:40%
+      }
+      50% {
+        height:100%
+      }
+      100%{
+        height: 50%;
+      }
+    } */
+  
+    /* 实现三角形 */
+    #triangle-up {
+      width: 0;
+      height: 0;
+      /* 构造三条边 */
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid red;
+    }
+
+    #triangle-down {
+      width: 0;
+      height: 0;
+      /* 构造三条边 */
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-top: 100px solid blue;
+    }
+    #triangle-left{
+      width: 0;
+      height: 0;
+      /* 构造三条边 */
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-right: 100px solid green;
+    }
+    #triangle-right{
+      width: 0;
+      height: 0;
+      /* 构造三条边 */
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 100px solid pink;
+    }
+    .title{
+      position: relative;
+    }
+    .triangle-right{
+      position: absolute;
+      top:6px;
+      width: 0;
+      height: 0;
+      /* 构造三条边 */
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 10px solid pink;
+    }
+    .sub-title{
+      visibility: hidden;
+      opacity: 0;
+    }
+    #title:hover .sub-title{
+      visibility: visible;
+      opacity: 1;
+      transition: opacity,3s,linear,2s;
+    }
+    #title:hover .triangle-right{
+      transform: rotate(90deg);
+      transition: all,.5s,ease,1s;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div id="outBox" class="clear">
+    <div id="centerBox" >鼠标放上来</div>
+  </div> -->
+  
+  <!-- <div id="outBox">
+    <div id="centerBox">
+      <ul id="wave">
+        <li class="li1"></li>
+        <li class="li2"></li>
+        <li class="li3"></li>
+        <li class="li4"></li>
+        <li class="li5"></li>
+      </ul>
+    </div>
+  </div> -->
+  <div id="triangle-up"></div>
+  <div id="triangle-down"></div>
+  <div id="triangle-right"></div>
+  <div id="triangle-left"></div>
+<div id="nav">
+  <ul>
+    <li class="title" id="title">
+      <span>一级标题</span><span class="triangle-right"></span>
+      <ul class="sub-title" >
+        <li>二级标题</li>
+        <li>二级标题</li>
+        <li>二级标题</li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+  
+</div>
+</body>
+<script type="text/javascript">
+</script>
+</html>

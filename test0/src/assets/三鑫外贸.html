@@ -1,0 +1,250 @@
+<style>
+    #div3{overflow:auto;}
+    .headtitle{width:122mm;display:inline-block;float:left;margin-left:35px;font-size:13px;}
+    .printinfo{width:115mm;margin:0 15px;display:inline-block;float:left}
+    .headtitle .logo{width:50px;height:50px;display:inline-block}
+    .headtitle .logo img{width:50px;height:50px;display:inline-block}
+    .headtitle .glasstitle{text-align:center;display:inline-block;margin-top:18px;vertical-align:top}
+    .headtitle .packing{text-align:center;font-size:18px;font-weight:bold;margin-top: 10px;position:relative}
+    .headtitle .packing span{position:absolute;top:-27px}
+    .printinfo ul{margin:0 0 0 20px;padding:0}
+    .printinfo ul li{list-style-type:none;}
+    .printinfo table{table-layout:fixed}
+    .printinfo table td{text-align:center}
+    .maleft{margin-left:100px;}
+    </style>
+
+
+<div id="div1">
+    <div style="overflow: auto">
+        <div class="headtitle">
+            <div class="logo">
+                <img src="<!--ImgUrl--><!--FinishLogoUrl-->" alt="" />
+            </div>
+            <p class="glasstitle">      AVIC SANXIN CO. , LTD.</p>
+            <div class="packing">PACKING SLIP<span></span></div>
+        </div>
+        <div class="headtitle maleft">
+            <div class="logo">
+                <img src="<!--ImgUrl--><!--FinishLogoUrl-->" alt="" />
+            </div>
+            <p class="glasstitle">      AVIC SANXIN CO. , LTD.</p>
+            <div class="packing">PACKING SLIP<span></span></div>
+        </div>
+    </div>
+</div>
+
+<div id="div2">
+    <div style="overflow: auto">
+        <div class="printinfo">
+            <ul>
+                <li>Customer：<!--CustomerName--></li>
+                <li>PO number：<!--OrderGroupCode--></li>
+                <li>Proiect name：<!--ProjectName--></li>
+                <li>Crate No：<!--StockInCode--></li>
+                <li>Ouantitv：<!--TotalPcs-->  PCS</li>
+                <li>Glass location：<!--OrderGroupCode--></li>
+                <li>Product：<!--ProductName--></li>
+            </ul>
+        </div>
+        <div class="printinfo maleft">
+            <ul>
+                <li>Customer：<!--CustomerName--></li>
+                <li>PO number：<!--OrderGroupCode--></li>
+                <li>Proiect name：<!--ProjectName--></li>
+                <li>Crate No：<!--StockInCode--></li>
+                <li>Ouantitv：<!--TotalPcs-->  PCS</li>
+                <li>Glass location：<!--OrderGroupCode--></li>
+                <li>Product：<!--ProductName--></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="div3">
+    <div class="printinfo">
+        <table>
+            <tbody class="tbodyinfo copytbodyinfo">
+                 <!--ItemListStart1-->
+         <!--ItemListStart-->
+                <tr>
+                    <td style="width: 125px;"><!--ItemSize-->mm</td>
+                    <td style="width: 15px;"><!--ItemPcs--></td>
+                    <td style="width: 30px;">PCS</td>
+                    <td style="width: 100px;"><!--ItemCode--></td>
+                </tr>
+                 <!--ItemListEnd-->
+                <!--ItemListEnd1-->                              
+        </tbody>
+        </table>
+    </div>
+    <div class="printinfo maleft">
+        <table>
+            <tbody class="tbodyinfo fztbodyinfo">
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="div4">
+  <div class="printinfo">
+     <p>Crate Dimension：<!--BoxLength-->mm(L) * <!--BoxWidth-->mm(H)*<!--BoxHeight-->mm(THK)</p>
+  </div>
+  <div class="printinfo maleft">
+     <p>Crate Dimension： <!--BoxLength-->mm(L) * <!--BoxWidth-->mm(H)*<!--BoxHeight-->mm(THK)</p>
+  </div>
+</div>
+
+
+<script>
+    function PrintOneURL() {
+        //$.ligerDialog.waitting("打印中，请稍等....");
+        codelist = getCheckedPrintList();//架卡号数组
+        LODOP = getLodop(document.getElementById("LODOP"), document.getElementById("LODOP_EM"));
+        LODOP.PRINT_INIT("按网址打印入库单");
+        LODOP.SET_PRINT_PAGESIZE(2, $("#hidPaperWidth").val(), $("#hidPaperHeight").val(), ""); //打印方向及纸张类型,纸张宽度,纸张高
+        Templateapi()
+    }
+
+    function Templateapi() {
+        $.ajax({
+            type: "post",
+            url: "../Ashx/AjaxHandler.ashx",
+            cache: false,
+            async: true,
+            data: { type: "GetPrintFinishedStockTemplateInfo", code: codelist[printnum] },
+            success: function (data) {
+                var jsonARR = JSON.parse(data);
+                if (jsonARR.MsgCode == "100") {
+                    CreatePrintPage(jsonARR.PrintDetail);
+                } else {
+                    $.ligerDialog.close();
+                    $.ligerDialog.error("接口错误，" + jsonARR.MsgDetail + "");
+                }
+            }
+        });
+    }
+    function CreatePrintPage(data) {
+        $("#printcon").html("");
+        $("#printcon").html(data);
+        copyTableHtml();
+        var ERcode = codelist[printnum];//条码
+        if (PrintName == "-1") {
+            alert("打印机名称未配置！");
+            return;
+        }
+        LODOP.SET_PRINT_STYLEA(0, "Vorient", 3); //Vorient设定打印项在纸张范围内的垂直方向的位置锁定方式
+
+
+        LODOP.ADD_PRINT_HTM(1, "5", "100%", "90", $("#hidenCSS").val() + $("#printcon #div1").html() + $("#hidenJS").val());
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚 每页都输出
+
+        LODOP.ADD_PRINT_HTM(90, "62", "100%", "150", $("#hidenCSS").val() + $("#printcon #div2").html() + $("#hidenJS").val()); 
+        
+        LODOP.ADD_PRINT_HTM(245, "62", "100%", "433", $("#hidenCSS").val() + $("#printcon #div3").html() + $("#hidenJS").val());
+        // LODOP.SET_PRINT_STYLEA(0, "LinkedItem", -1);  //LinkedItem设置关联内容项的项目编号
+
+        LODOP.ADD_PRINT_HTM(675, "62", "100%", "30", $("#hidenCSS").val() + $("#printcon #div4").html() + $("#hidenJS").val());
+        // LODOP.SET_PRINT_STYLEA(0, "LinkedItem", -2);  //LinkedItem设置关联内容项的项目编号
+
+        LODOP.ADD_PRINT_LINE(85, 30, 85, 500, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(730, 30, 85, 30, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(730, 30, 730, 500, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(730, 500, 85, 500, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(85, 600, 85, 1050, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(85, 600, 730, 600, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(730, 600, 730, 1050, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+        LODOP.ADD_PRINT_LINE(85, 1050, 730, 1050, 0, 2);
+        LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+
+
+        //页码
+        LODOP.ADD_PRINT_HTM(735, 450, 27, 19, "<font color='#000' style='font-size:14px;'><span tdata='pageNO' style='margin-right:1px;'>#</span>/<span tdata='pageCount'>#</span></font>");
+        // LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+        LODOP.ADD_PRINT_HTM(735, 1000, 26, 19, "<font color='#000' style='font-size:14px;'><span tdata='pageNO' style='margin-right:1px;'>#</span>/<span tdata='pageCount'>#</span></font>");
+        // LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // ItemType打印属性  页眉页脚
+        var Linkedindex = 2;
+    // if ($("#printcon #pagenumber").length > 1) {
+    //     for (var i = 0; i < $("#printcon #pagenumber").length; i++) {
+    //         Linkedindex++;
+    //         var thistext = $("#printcon #pagenumber")[i]; //页码位置
+    //         var pagepostin = $(thistext).text().split(",");
+    //         LODOP.ADD_PRINT_TEXT(pagepostin[0], pagepostin[1], pagepostin[2], pagepostin[3], "第#页/共&页");
+    //         LODOP.SET_PRINT_STYLEA(0, "ItemType", 2);
+    //         LODOP.SET_PRINT_STYLEA(0, "Alignment", 2);
+    //         LODOP.SET_PRINT_STYLEA(0, "LinkedItem", -Linkedindex); //LinkedItem设置关联内容项的项目编号
+    //     }
+    // }
+        var barcodeLIst = [[34, 87, 238, 30], [36, 663, 238, 30]]
+        if (barcodeLIst.length) {
+
+            for (var i = 0; i < barcodeLIst.length; i++) {
+                var barcodeitem = barcodeLIst[i];
+                var barcodeIm = barcodeitem;
+                Linkedindex++;
+                LODOP.ADD_PRINT_BARCODE(barcodeIm[0], barcodeIm[1], "" + barcodeIm[2] + "", "" + barcodeIm[3] + "", "CODE93", ERcode);
+                LODOP.SET_PRINT_STYLEA(0, "FontSize", 6); //设置上面这个条码下方的文字字体大小
+            }
+        }   
+
+        LODOP.NewPageA();//新加一个页面
+        if (printnum < (codelist.length - 1)) {
+            printnum++;
+            Templateapi();
+        } else {
+            LODOP.PRINT_DESIGN();//打印设计
+            //LODOP.PRINT();//打印预览
+            //LODOP.PREVIEW()
+            FinishedHGlog(); //记录打印日志
+            $("#button").attr("disabled", "disabled");
+            if (GetQueryString("OpenType") == "Back") {
+                setTimeout(function () {
+                    var LevelShelfId = GetQueryString("LevelShelfId");
+                }, 1000);
+            }
+            else if (GetQueryString("Auto") == "1") {
+                window.location.href = window.location.href.replace("Auto=1&", "");
+            }
+            else {
+                window.location.href = window.location.href;
+            }
+        }
+    }
+    $(function () {
+        if (GetQueryString("autoprint") == 1) {
+            PrintOneURL()
+        }
+        copyTableHtml();
+    })
+    function copyTableHtml(){
+        debugger;
+        $(".fztbodyinfo").html($(".copytbodyinfo").html())
+    }
+    function textinfo() {
+        var str = "";
+        for (var i = 0; i < 20; i++) {
+            str+="<tr>";
+            str+="    <td style=\"width: 125px;\">1190*3643 mm</td>";
+            str+="    <td style=\"width: 15px;\">2"+i+"</td>";
+            str+="    <td style=\"width: 30px;\">PCS</td>";
+            str+="    <td style=\"width: 100px;\">GWC-01</td>";
+            str+="</tr>";
+        }
+        $(".tbodyinfo").append(str)
+    }
+</script>
