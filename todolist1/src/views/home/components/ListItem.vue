@@ -18,7 +18,7 @@
         <div>{{item.date}}</div>
       </el-col>
       <el-col :span="2" class="color-blue">
-        <div @click="delTodo(item.id)">删除</div>
+        <div @click="delTodo(item.id)">删除 </div>
         <input type="file" multiple accept=".png, .jpg, .jpeg" @change="getFile($event)">
       </el-col>
     </el-row>
